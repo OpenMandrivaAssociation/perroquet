@@ -1,15 +1,16 @@
 Summary:	A listening comprehension tutor
 Name:		perroquet
 Version:	1.0.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 Source0:	http://launchpad.net/perroquet/trunk/1.0.1/+download/perroquet-1.0.1.tar.gz
 License:	GPLv3
-Group:		Graphical desktop/GNOME
+Group:		Education
 URL:		http://perroquet.b219.org
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	python-devel
 BuildRequires:	intltool
 BuildRequires:	python-setuptools
+BuildRequires:	desktop-file-utils
 Requires:	gtk+2.0
 Requires:	gstreamer0.10-plugins-good
 Requires:	gstreamer0.10-python
@@ -40,6 +41,13 @@ python setup.py \
 	--without-mime-database \
 	--without-desktop-database \
 	install --root=%{buildroot}
+
+desktop-file-install \
+	--remove-key=Encoding \
+	--remove-category=Application \
+	--add-category=Languages \
+	--dir %{buildroot}%{_datadir}/applications \
+	%{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %find_lang %name
 
