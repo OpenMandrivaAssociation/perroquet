@@ -1,12 +1,11 @@
 Summary:	A listening comprehension tutor
 Name:		perroquet
-Version:	1.0.1
-Release:	%mkrel 2
-Source0:	http://launchpad.net/perroquet/trunk/1.0.1/+download/perroquet-1.0.1.tar.gz
+Version:	1.1.1
+Release:	%mkrel 1
+Source0:	http://launchpad.net/perroquet/1.1/%{version}/+download/%{name}-%{version}.tar.gz
 License:	GPLv3
 Group:		Education
 URL:		http://perroquet.b219.org
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	python-devel
 BuildRequires:	intltool
 BuildRequires:	python-setuptools
@@ -29,13 +28,13 @@ them to continue. You can listen a sequence as many times as necessary.
 If you do not understand, Perroquet offers several means to help you.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 python setup.py build 
 
 %install
-%__rm -rf %{buildroot}
+rm -rf %{buildroot}
 python setup.py \
 	--without-icon-cache \
 	--without-mime-database \
@@ -49,18 +48,22 @@ desktop-file-install \
 	--dir %{buildroot}%{_datadir}/applications \
 	%{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%find_lang %name
+%find_lang %{name}
 
 %clean
-%__rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README AUTHORS ChangeLog NEWS MAINTAINERS
 %{_bindir}/%{name}
-%{python_sitelib}/*
+%{python_sitelib}/%{name}lib
+%{python_sitelib}/%{name}-%{version}-py%{py_ver}.egg-info
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/*/*.*
-%{_datadir}/%{name}/*
+%{_datadir}/%{name}
 %{_datadir}/pixmaps/*
 %{_datadir}/mime/packages/%{name}.xml
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/*.ini
+%config(noreplace) %{_sysconfdir}/%{name}/*.conf
