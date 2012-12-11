@@ -67,3 +67,22 @@ rm -rf %{buildroot}
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/*.ini
 %config(noreplace) %{_sysconfdir}/%{name}/*.conf
+
+
+%changelog
+* Fri Jun 17 2011 Jani Välimaa <wally@mandriva.org> 1.1.1-1mdv2011.0
++ Revision: 685873
+- new version 1.1.1
+- drop buildroot definition
+- minor .spec cleanup
+
+* Sat Jan 16 2010 Jérôme Brenier <incubusss@mandriva.org> 1.0.1-2mdv2011.0
++ Revision: 492482
+- use Education for the Group tag
+- fix desktop file (and BR desktop-file-utils)
+
+* Sat Jan 16 2010 Ahmad Samir <ahmadsamir@mandriva.org> 1.0.1-1mdv2010.1
++ Revision: 491950
+- import perroquet
+
+
