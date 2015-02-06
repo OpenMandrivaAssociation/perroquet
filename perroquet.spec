@@ -1,7 +1,7 @@
 Summary:	A listening comprehension tutor
 Name:		perroquet
 Version:	1.1.1
-Release:	%mkrel 1
+Release:	2
 Source0:	http://launchpad.net/perroquet/1.1/%{version}/+download/%{name}-%{version}.tar.gz
 License:	GPLv3
 Group:		Education
