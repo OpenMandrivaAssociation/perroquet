@@ -5,7 +5,7 @@ Release:	2
 Source0:	http://launchpad.net/perroquet/1.1/%{version}/+download/%{name}-%{version}.tar.gz
 License:	GPLv3
 Group:		Education
-URL:		http://perroquet.b219.org
+URL:		https://perroquet.b219.org
 BuildRequires:	python-devel
 BuildRequires:	intltool
 BuildRequires:	python-setuptools
